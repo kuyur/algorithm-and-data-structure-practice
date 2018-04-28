@@ -112,8 +112,8 @@ Heap.prototype.downheapifyImpl_ = function(i) {
 }
 
 /**
- * Insert a element into heap, and execute heapify.
- * @param {number} el 
+ * Insert an element into heap, and execute heapify.
+ * @param {number} el
  */
 Heap.prototype.insert = function(el) {
   if (typeof el !== 'number') {

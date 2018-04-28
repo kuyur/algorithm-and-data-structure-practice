@@ -17,13 +17,26 @@ Time consumed: consider the count of the array is `n`, the consumed time will be
 
     // make a test array
     var arr = [];
-    for (var i = 0; i < 10000; ++i) {
-      arr[i] = Math.floor(Math.random() * 10000);
+    var n = 10000;
+    for (var i = 0; i < n; ++i) {
+      arr[i] = Math.floor(Math.random() * n);
     }
 
-    var heap = new Heap(1000);
-    for (var i = 0; i < 10000; ++i) {
+    var k = 1000;
+    var heap = new Heap(k);
+    for (var i = 0; i < n; ++i) {
       heap.insert(arr[i]);
     }
-
     console.log(heap.getTop());
+
+    // test result is correct or not
+    arr.sort(function(a, b) {return a - b;});
+    var newArr = [];
+    var j = 0;
+    for (var i = 0; i < n; ++i) {
+      if (newArr[j - 1] !== arr[i]) {
+        newArr[j] = arr[i];
+        j++;
+      }
+    }
+    console.log(newArr[k - 1]);

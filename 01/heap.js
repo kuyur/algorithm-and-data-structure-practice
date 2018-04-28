@@ -9,7 +9,8 @@ var Heap = function(capacity, duplicatedChecking) {
   this.count_ = 0;
   this.capacity_ = capacity || 127;
 
-  if (duplicatedChecking) {
+  this.duplicatedChecking_ = !!duplicatedChecking;
+  if (this.duplicatedChecking_) {
     this.map_ = {};
   }
 };
@@ -123,7 +124,7 @@ Heap.prototype.insert = function(el) {
     return;
   }
 
-  if (this.map_) {
+  if (this.duplicatedChecking_) {
     if (this.map_[el]) {
       return;
     }

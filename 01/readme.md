@@ -9,7 +9,7 @@ Use max heap. Implement sift-down heapify and sift-up heapify. The capacity of t
 
 Actually, all the smallest values before k-th are evaluated inside heap.
 
-If input array contains many duplicated numbers, we can add an additional map to accelerate the insert operation.
+If input array contains many duplicated numbers(e.g. after removing the duplicated numbers, the count reduces to 1% of original array), we can add an additional map to accelerate the insert operation.
 
 Time consumed: consider the count of the array is `n`, the consumed time will be `nlog(k)`.
 
@@ -23,12 +23,21 @@ Time consumed: consider the count of the array is `n`, the consumed time will be
     }
 
     var k = 10000;
+
     var ts = new Date;
-    var heap = new Heap(k);
+    var heap1 = new Heap(k);
     for (var i = 0; i < n; ++i) {
-      heap.insert(arr[i]);
+      heap1.insert(arr[i]);
     }
-    console.log(heap.getTop());
+    console.log(heap1.getTop());
+    console.log('time consumed: ' + (new Date - ts));
+
+    var ts = new Date;
+    var heap2 = new Heap(k, true);
+    for (var i = 0; i < n; ++i) {
+      heap2.insert(arr[i]);
+    }
+    console.log(heap2.getTop());
     console.log('time consumed: ' + (new Date - ts));
 
     // test result is correct or not

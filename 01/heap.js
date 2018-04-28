@@ -4,11 +4,14 @@
  * @author kuyur@kuyur.info
  * @constructor
  */
-var Heap = function(capacity) {
+var Heap = function(capacity, duplicatedChecking) {
   this.array_ = [];
   this.count_ = 0;
-  this.map_ = {};
   this.capacity_ = capacity || 127;
+
+  if (duplicatedChecking) {
+    this.map_ = {};
+  }
 };
 
 /**
@@ -120,10 +123,12 @@ Heap.prototype.insert = function(el) {
     return;
   }
 
-  if (this.map_[el]) {
-    return;
+  if (this.map_) {
+    if (this.map_[el]) {
+      return;
+    }
+    this.map_[el] = true;
   }
-  this.map_[el] = true;
 
   if (this.count_ < this.capacity_) {
     this.array_[this.count_] = el;

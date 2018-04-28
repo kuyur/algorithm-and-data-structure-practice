@@ -2,17 +2,17 @@
 /**
  * max-heap class.
  * @author kuyur@kuyur.info
+ * @param {number} capacity
+ * @param {boolean=} duplicatedChecking Use a global duplicated-number checking policy or not.
  * @constructor
  */
-var Heap = function(capacity, duplicatedChecking) {
+var Heap = function(capacity, opt_duplicatedChecking) {
   this.array_ = [];
   this.count_ = 0;
   this.capacity_ = capacity || 127;
+  this.map_ = {};
 
-  this.duplicatedChecking_ = !!duplicatedChecking;
-  if (this.duplicatedChecking_) {
-    this.map_ = {};
-  }
+  this.duplicatedChecking_ = !!opt_duplicatedChecking;
 };
 
 /**
@@ -124,10 +124,11 @@ Heap.prototype.insert = function(el) {
     return;
   }
 
+  if (this.map_[el]) {
+    return;
+  }
   if (this.duplicatedChecking_) {
-    if (this.map_[el]) {
-      return;
-    }
+    // record all numbers, but will cost much memory
     this.map_[el] = true;
   }
 
@@ -135,10 +136,19 @@ Heap.prototype.insert = function(el) {
     this.array_[this.count_] = el;
     this.count_++;
     this.upheapfiy_();
+    if (!this.duplicatedChecking_) {
+      this.map_[el] = true;
+    }
   } else {
     if (el < this.getTop()) {
+      var top = this.array_[0];
       this.array_[0] = el;
       this.downheapify_();
+      if (!this.duplicatedChecking_) {
+        // record the numbers in current heap only
+        this.map_[el] = true;
+        delete this.map_[top];
+      }
     }
   }
 };

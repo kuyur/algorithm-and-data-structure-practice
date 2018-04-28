@@ -5,11 +5,14 @@ Output: k-th smallest value inside the array. Ignore the value if it is duplicat
 
 # Answer
 
-Use max heap. Implement sift-down heapify and sift-up heapify. The capacity of the heap can be limited at k.
+Use max heap. 
+* Implement sift-down heapify and sift-up heapify.
+* Use a map for duplicated number checking.
+* The capacity of the heap can be limited at k.
 
 Actually, all the smallest values before k-th are evaluated inside heap.
 
-If input array contains many duplicated numbers(e.g. after removing the duplicated numbers, the count reduces to 1% of original array), we can add an additional map to accelerate the insert operation.
+If input array contains many duplicated numbers(low density array, for example, after removing the duplicated numbers, the count reduces to 0.1% of original array), we can use a global duplicated numbers checking policy to accelerate the insert operation.
 
 Time consumed: consider the count of the array is `n`, the consumed time will be `nlog(k)`.
 

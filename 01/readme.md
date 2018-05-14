@@ -14,7 +14,7 @@ Actually, all the smallest values before k-th are evaluated inside heap.
 
 If input array contains many duplicated numbers(low density array, for example, after removing the duplicated numbers, the count reduces to 0.1% of original array), we can use a global duplicated numbers checking policy to accelerate the insert operation.
 
-Time consumed: consider the count of the array is `n`, the consumed time will be `nlog(k)`.
+Time consumed: consider the elements count of the input array is `n`, the consumed time will be `nlog(k)`.
 
 # Code
 

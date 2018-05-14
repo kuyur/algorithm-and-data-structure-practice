@@ -3,7 +3,7 @@
  * max-heap class.
  * @author kuyur@kuyur.info
  * @param {number} capacity
- * @param {boolean=} duplicatedChecking Use a global duplicated-number checking policy or not.
+ * @param {boolean=} opt_duplicatedChecking Use a global duplicated-number checking policy or not.
  * @constructor
  */
 var Heap = function(capacity, opt_duplicatedChecking) {

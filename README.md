@@ -1,2 +1,2 @@
-# data-structure-practice
-the practice of data structure.
+# algorithm-and-data-structure-practice
+the practice of algorithm and data structure.

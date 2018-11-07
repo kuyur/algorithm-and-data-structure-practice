@@ -1,8 +1,8 @@
 # Background
 
-Here are the rules of Lights Out Game:
-
 There is a matrix panel, holding a light in every cell.
+
+Here are the rules of Lights Out Game:
 * There are two statuses, `on` and `off`, for each light. Let's mark `on` as `1`, and `off` as `0`.
 * We can touch the cell to toggle the status of light. However, the status of adjacent lights also will be toggled at the same time.
 * You can touch only one cell a time. One touching is calculated as 1 step. 

@@ -13,6 +13,7 @@
 // execute bool XOR operation on each element in matrix to reduce coefficients.
 
 /**
+ * Find out the solution of Lights Out Game.
  * @param {number} m row count
  * @param {number} n column count
  * @param {Array.<Array.<number>>} matrix
@@ -158,7 +159,7 @@ function gaussian_elimination_part2(matrix, dimension) {
  * @return {{
  *   'rank': number,
  *   'augmented': number
- * }}}
+ * }}
  */
 function rank(matrix, dimension) {
   var extended = -1;

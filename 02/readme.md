@@ -25,6 +25,8 @@ Because (the touched cell is marked as ❶):
     0 1 1 0 0  →  0 1 ❶ 0 0  →  0 0 0 1 0
     0 0 0 0 0     0 0 0 0 0     0 0 1 0 0
 
+You can refer to https://en.wikipedia.org/wiki/Lights_Out_(game) for more detail.
+
 # Question
 Given a matrix panel with some lights on, find out the solution with minimum steps to turn off all lights. If there is no solution, return null.
 
@@ -38,9 +40,6 @@ For example, given a matrix panel:
 One possible solution (with 4 steps) is:
 
     [1, 4] → [2, 3] → [2, 4] → [3, 4]
-
-
-You can refer to https://en.wikipedia.org/wiki/Lights_Out_(game) for more detail.
 
 # Hint
 

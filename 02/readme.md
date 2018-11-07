@@ -1,4 +1,4 @@
-# Question
+# Background
 
 Here are the rules of Lights Out Game:
 
@@ -25,6 +25,7 @@ Because (the touched cell is marked as ❶):
     0 1 1 0 0  →  0 1 ❶ 0 0  →  0 0 0 1 0
     0 0 0 0 0     0 0 0 0 0     0 0 1 0 0
 
+# Question
 Given a matrix panel with some lights on, find out the solution with minimum steps to turn off all lights. If there is no solution, return null.
 
 For example, given a matrix panel:

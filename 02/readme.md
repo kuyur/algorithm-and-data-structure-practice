@@ -43,7 +43,7 @@ One possible solution (with 4 steps) is:
 
 # Hint
 
-The order of steps is not important actually. Even we disrupt the order, it still be a valid solution, e.g.:
+The order of steps is not important actually. Even we disrupt the order, it still is a valid solution, e.g.:
 
     [2, 3] → [2, 4] → [1, 4] → [3, 4]
 

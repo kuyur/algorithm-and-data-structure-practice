@@ -1,3 +1,7 @@
+/**
+ * @author kuyur@kuyur.info
+ */
+
 // lights out game, see https://en.wikipedia.org/wiki/Lights_Out_(game)
 // It is a Linear algebra mathematical problem.
 // rank(A) < rank(A|B), no solution

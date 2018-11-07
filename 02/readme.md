@@ -256,6 +256,10 @@ It is a Linear algebra mathematical problem actually.
 
 因为方程组中的加法(+)是异或运算，在高斯消元的时候同样需要使用异或运算。
 
+## 时间复杂度
+
+如果矩阵的行数为m，列数为n，则时间复杂度为O((mn)<sup>3</sup>).
+
 # Code
     var matrix = [
       [0, 0, 0, 0, 1],
@@ -270,4 +274,19 @@ It is a Linear algebra mathematical problem actually.
     //   [0, 0, 0, 0, 1],
     //   [0, 0, 0, 1, 1],
     //   [0, 0, 0, 0, 1]
+    // ]
+
+    var matrix2 = [
+      [1, 0, 0, 0, 1],
+      [0, 1, 1, 1, 0],
+      [0, 1, 1, 1, 0],
+      [1, 0, 0, 0, 1]
+    ];
+    var result2 = findSolution(4, 5, matrix2);
+    console.log(result2);
+    // [
+    //   [1, 1, 1, 1, 1],
+    //   [1, 1, 1, 1, 1],
+    //   [1, 1, 1, 1, 1],
+    //   [1, 1, 1, 1, 1]
     // ]

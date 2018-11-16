@@ -4,7 +4,7 @@ Given two 0-based indexes P and Q, satisfying: `0 <= P < Q <= length - 1`.
 Let `Num_p = arr[P]`, `Num_q = arr[Q]`.  
 If `Num_p != Num_q` and there is no number between `Math.min(Num_p, Nump_q)` and `Math.max(Num_p, Num_q)` existing in arr, then we call `Math.abs(P- Q)` as a `valid distance of sibling numbers`.
 
-Evaluate the maximum `valid distance of sibling numbers` for this array.
+Evaluate the maximum `valid distance of sibling numbers` for this array. If there is no valid distance, return -1.
 
 ```javascript
 /**

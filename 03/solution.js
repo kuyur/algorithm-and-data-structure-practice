@@ -1,4 +1,8 @@
 /**
+ * @author kuyur@kuyur.info
+ */
+
+/**
  * Return maximum valid distance of sibling numbers of given array.
  * @param {Array.<number>} arr
  * @return {number}

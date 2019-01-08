@@ -155,7 +155,7 @@ Heap.prototype.insert = function(el) {
 
 /**
  * Get the max element.
- * @param {number} k
+ * @return {number}
  */
 Heap.prototype.getTop = function() {
   return this.array_[0];

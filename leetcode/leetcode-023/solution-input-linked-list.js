@@ -11,7 +11,7 @@ var Heap = function(capacity) {
 };
 
 /**
- * @type {Array.<number>}
+ * @type {Array.<{val: number, next: {}}>}
  */
 Heap.prototype.array_;
 
@@ -48,7 +48,7 @@ Heap.prototype.upheapfiy_ = function() {
   var i = this.count_ - 1;
   var p = this.getParentIndex_(i);
   while (p != null) {
-    if (this.array_[p] > this.array_[i]) {
+    if (this.array_[p].val > this.array_[i].val) {
       var m = this.array_[p];
       this.array_[p] = this.array_[i];
       this.array_[i] = m;
@@ -81,15 +81,15 @@ Heap.prototype.downheapifyImpl_ = function(i) {
   }
   var right = i * 2 + 2;
   if (right <= this.count_ - 1) {
-    if (this.array_[left] > this.array_[right]) {
-      if (this.array_[i] > this.array_[right]) {
+    if (this.array_[left].val > this.array_[right].val) {
+      if (this.array_[i].val > this.array_[right].val) {
         var m = this.array_[i];
         this.array_[i] = this.array_[right];
         this.array_[right] = m;
         this.downheapifyImpl_(right);
       }
     } else {
-      if (this.array_[i] > this.array_[left]) {
+      if (this.array_[i].val > this.array_[left].val) {
         var m = this.array_[i];
         this.array_[i] = this.array_[left];
         this.array_[left] = m;
@@ -97,7 +97,7 @@ Heap.prototype.downheapifyImpl_ = function(i) {
       }
     }
   } else {
-    if (this.array_[i] > this.array_[left]) {
+    if (this.array_[i].val > this.array_[left].val) {
       var m = this.array_[i];
       this.array_[i] = this.array_[left];
       this.array_[left] = m;
@@ -107,10 +107,10 @@ Heap.prototype.downheapifyImpl_ = function(i) {
 
 /**
  * Insert an element into heap, and execute heapify.
- * @param {number} el
+ * @param {{val: number, next: {}}} el
  */
 Heap.prototype.insert = function(el) {
-  if (typeof el !== 'number') {
+  if (typeof el !== 'object') {
     return;
   }
 
@@ -119,7 +119,7 @@ Heap.prototype.insert = function(el) {
     this.count_++;
     this.upheapfiy_();
   } else {
-    if (el > this.getTop()) {
+    if (el.val >= this.getTop().val) {
       var top = this.array_[0];
       this.array_[0] = el;
       this.downheapify_();
@@ -129,10 +129,33 @@ Heap.prototype.insert = function(el) {
 
 /**
  * Get the min element.
- * @return {number}
+ * @return {{val: number, next: {}}}
  */
 Heap.prototype.getTop = function() {
   return this.array_[0];
+};
+
+/**
+ * Popup the top element and execute heapify.
+ * @return {{val: number, next: {}}}
+ */
+Heap.prototype.pop = function() {
+  if (this.count_ === 0) {
+    return null;
+  }
+
+  var top = this.array_[0];
+  if (this.count_ === 1) {
+    this.array_ = [];
+    this.count_ = 0;
+  } else {
+    this.array_[0] = this.array_[this.count_ - 1];
+    this.array_[this.count_ - 1] = null; // only set to null. resetting length of array is not good.
+    this.count_--;
+    this.downheapify_();
+  }
+
+  return top;
 };
 
 /**
@@ -152,6 +175,18 @@ Heap.prototype.getCapacity = function() {
 };
 
 /**
+ * Set capacity again.
+ * @param {number} capacity
+ */
+Heap.prototype.setCapacity = function(capacity) {
+  if (this.count_ > capacity) {
+    return;
+  }
+
+  this.capacity_ = capacity
+};
+
+/**
  * Is heap full.
  * @return {boolean}
  */
@@ -160,14 +195,73 @@ Heap.prototype.isFull = function() {
 };
 
 /**
- * @param {number[]} nums
- * @param {number} k
- * @return {number}
+ * @param {Array.<ListNode>} lists
+ * @return {ListNode}
  */
-var findKthLargest = function(nums, k) {
-  var heap1 = new Heap(k);
-  for (var i = 0, len = nums.length; i < len; ++i) {
-    heap1.insert(nums[i]);
+var mergeKLists = function(lists) {
+  var k = lists.length;
+  if (k === 0) {
+    return null;
   }
-  return heap1.getTop();
+  if (k === 1) {
+    return lists[0];
+  }
+
+  var heap1 = new Heap(k);
+  var capacity = 0;
+  for (var i = 0; i < k; ++i) {
+    if (lists[i] != null) {
+      heap1.insert(lists[i]);
+      capacity++;
+    }
+  }
+  heap1.setCapacity(capacity);
+
+  if (heap1.getCount() === 0) {
+    return null;
+  }
+
+  var result = heap1.getTop(), prev = {
+    next: null
+  };
+  var top;
+  while (top = heap1.getTop()) {
+    prev.next = top;
+    prev = top;
+    if (top.next != null) {
+      heap1.insert(top.next);
+    } else {
+      heap1.pop();
+      heap1.setCapacity(--capacity);
+    }
+  }
+
+  return result;
 };
+
+var n3 = {
+  val: 2,
+  next: null
+};
+var n2 = {
+  val: 2,
+  next: n3
+};
+var n1 = {
+  val: 1,
+  next: n2
+};
+var n6 = {
+  val: 2,
+  next: null
+};
+var n5 = {
+  val: 1,
+  next: n6
+};
+var n4 = {
+  val: 1,
+  next: n5
+};
+var input = [n1, n4];
+console.log(JSON.stringify(mergeKLists(input), null, 2));

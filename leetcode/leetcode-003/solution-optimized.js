@@ -9,6 +9,10 @@
  */
 
 /**
+ * @author kuyur@kuyur.info
+ */
+
+/**
  * @param {string} s
  * @return {number}
  */

@@ -19,10 +19,10 @@
  * @return {Array.<number>}
  */
 var mergeTwoLists = function(l1, l2) {
-  if (l1 == null) {
+  if (l1 == null || l1.length === 0) {
     return l2;
   }
-  if (l2 == null) {
+  if (l2 == null || l2.length === 0) {
     return l1;
   }
 

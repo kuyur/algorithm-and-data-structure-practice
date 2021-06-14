@@ -25,7 +25,6 @@ var maxProfit = function(prices) {
     return 0;
   }
 
-
   var maximum = 0;
   var accumulated = 0;
   var delta;

@@ -1,6 +1,9 @@
 /**
- * min-heap class.
  * @author kuyur@kuyur.info
+ */
+
+/**
+ * min-heap class.
  * @param {number} capacity
  * @constructor
  */

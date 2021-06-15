@@ -32,10 +32,8 @@ var twoSum = function(nums, target) {
 
   // use two pointers
   var length = nums.length;
-  var i = 0,
-    j = length - 1;
-  for (; i < length; ++i) {
-    for (; j > i; --j) {
+  for (var i = 0; i < length; ++i) {
+    for (var j = length - 1; j > i; --j) {
       var sum = nums[i].value + nums[j].value;
       if (sum < target) {
         break;

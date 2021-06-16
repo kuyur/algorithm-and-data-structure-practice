@@ -9,7 +9,7 @@ WHERE
   salary.salary >= salary_avg.salary_avg;
 ```
 
-Multiple tables query equal to `inner join` query.
+`Multiple tables query` equals to `inner join` query.
 
 ```sql
 SELECT salary.employee_id, salary.position, salary.salary
